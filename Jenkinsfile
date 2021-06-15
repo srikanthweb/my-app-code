@@ -15,6 +15,9 @@ node {
 	mail bcc: '', body: 'maven build is success full', cc: '', from: '', replyTo: '', subject: 'build package ', to: 'gsri1190@gmail.com'
 		
 	}
+	stage('Slack Notification'){
+		slackSend channel: '#udemyproject', color: 'good', message: 'buildsuccess', teamDomain: 'vprofile-projects', tokenCredentialId: 'Slack_Oauth', username: 'srikanth'
+	}
 	
 }
 
