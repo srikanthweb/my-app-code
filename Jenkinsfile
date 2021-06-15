@@ -1,6 +1,6 @@
 
 node {
-   def mvn = tool (name: 'apache-maven-3.6.3', type: 'maven') + '/opt/apache-maven-3.6.3'
+   def mvn = tool name: 'maven', type: 'maven'
    stage('SCM Checkout'){
     // Clone repo
 	git 'https://github.com/srikanthweb/my-app-code.git'
@@ -9,7 +9,7 @@ node {
    stage('compile package'){
 	   // Build using maven
 	   
-	   sh "${mvn} package"
+	   sh "${mvn}/bin/mvn package"
    }
 }
 
