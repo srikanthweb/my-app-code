@@ -11,5 +11,10 @@ node {
 	   
 	   sh "${mvn}/bin/mvn package"
    }
+	stage('Email Notification'){
+	mail bcc: '', body: 'maven build is success full', cc: '', from: '', replyTo: '', subject: 'build package ', to: 'gsri1190@gmail.com'
+		
+	}
+	
 }
 
