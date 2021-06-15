@@ -9,7 +9,7 @@ node {
    stage('compile package'){
 	   // Build using maven
 	   
-	   sh "mvn package"
+	   sh 'mvn package'
    }
 }
 
