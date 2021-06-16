@@ -16,6 +16,7 @@ node {
 		
 	}
 	stage('Slack Notification'){
+		slackSend channel: '#udemyproject', color: 'good', message: 'build successfully finished', teamDomain: 'vprofile-projectshq.slack.com', tokenCredentialId: 'slack_notification', username: 'srikanth'
 		slackSend channel: '#udemyproject', color: 'good', message: 'buildsuccess', teamDomain: 'vprofile-projects', tokenCredentialId: 'Slack_Oauth', username: 'srikanth'
 	}
 	
