@@ -16,6 +16,7 @@ node {
 		
 	}
 	stage('Slack Notification'){
+		slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#dev-sri', color: 'good', message: 'build successfully finished', teamDomain: 'vprofile-projects', tokenCredentialId: 'slack-dev-sri', username: 'srikanth'
 		slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#dev-sri', color: 'good', message: 'build successfully finished', teamDomain: 'vprofile-projects', tokenCredentialId: 'slack_notification', username: 'srikanth'
 	}
 	
