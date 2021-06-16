@@ -15,19 +15,6 @@ stage('SonarQube Analysis') {
           sh "${mvn}/bin/mvn sonar:sonar"
         }
     }
-    stage('Quality Gate'){
-          timeout(time: 1, unit: 'HOURS') {
-              def qg = waitForQualityGate()
-              if (qg.status != 'OK') {
-                   slackSend baseUrl: 'https://hooks.slack.com/services/', 
-                   channel: '#dev-sri',
-                   message: "sonarqube analysis failed", 
-                   tokenCredentialId: 'slack-dev-sri',
-                   error "Pipeline aborted due to quality gate failure: ${qg.status}"
-              }
-          }
-      }
-       
 	stage('Email Notification'){
 	mail bcc: '', body: 'maven build is success full', cc: '', from: '', replyTo: '', subject: 'build package ', to: 'gsri1190@gmail.com'
 		
@@ -40,18 +27,3 @@ stage('SonarQube Analysis') {
 	
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
