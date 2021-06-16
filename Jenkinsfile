@@ -11,6 +11,11 @@ node {
 	   
 	   sh "${mvn}/bin/mvn package"
    }
+stage('SonarQube Analysis') {
+        withSonarQubeEnv('sonar-6') { 
+          sh "${mvn}/bin/mvn sonar:sonar"
+        }
+    }
 	stage('Email Notification'){
 	mail bcc: '', body: 'maven build is success full', cc: '', from: '', replyTo: '', subject: 'build package ', to: 'gsri1190@gmail.com'
 		
