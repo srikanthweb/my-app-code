@@ -22,7 +22,7 @@ stage('SonarQube Analysis') {
                    slackSend baseUrl: 'https://hooks.slack.com/services/', 
                    channel: '#dev-sri',
                    message: "sonarqube analysis failed", 
-                   tokenCredentialId: 'slack-dev-sri'
+                   tokenCredentialId: 'slack-dev-sri',
                    error "Pipeline aborted due to quality gate failure: ${qg.status}"
               }
           }
