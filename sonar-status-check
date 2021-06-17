@@ -25,7 +25,7 @@ node {
 	}
 	stage('check'){
 		
-	echo "i do somthing ..........!
+	echo "i do somthing ..........!"
 	}
 	
 	
