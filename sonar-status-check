@@ -1,3 +1,5 @@
+
+
 node {
    def mvn = tool name: 'maven', type: 'maven'
    stage('SCM Checkout'){
@@ -10,19 +12,25 @@ node {
 	   
 	   sh "${mvn}/bin/mvn package"
    }
-stage('SonarQube Analysis') {
+    stage('SonarQube Analysis') {
         withSonarQubeEnv('sonar-6') { 
           sh "${mvn}/bin/mvn sonar:sonar"
         }
     }
-    stage("Quality Gate"){
-          timeout(time: 1, unit: 'HOURS') {
-              def qg = waitForQualityGate()
-              if (qg.status != 'OK') {
-                  error "Pipeline aborted due to quality gate failure: ${qg.status}"
-              }
-          }
-      }        
+	
+	stage('SonarQube Analysis'){
+			withSonarQubeEnv('sonar-6') { 
+          sh "${mvn}/bin/mvn sonar:sonar"
+        }	
+	}
+	stage('check'){
+		
+	echo "i do somthing ..........!
+	}
+	
+	
+	
+	
 	stage('Email Notification'){
 	mail bcc: '', body: 'maven build is success full', cc: '', from: '', replyTo: '', subject: 'build package ', to: 'gsri1190@gmail.com'
 		
@@ -35,3 +43,4 @@ stage('SonarQube Analysis') {
 	
 	
 }
+
